@@ -13,6 +13,7 @@ import { DiagnosticsManager } from "./managers/diagnostics-manager";
 import { registerDefaultEffects } from "@/effects";
 import { registerDefaultMasks } from "@/masks";
 import { registerTranscriptionDiagnostics } from "@/transcription/diagnostics";
+import { installAgentBridge } from "@/agent/bridge";
 
 export class EditorCore {
 	private static instance: EditorCore | null = null;
@@ -66,6 +67,7 @@ export class EditorCore {
 			}
 		});
 		this.save.start();
+		installAgentBridge(this);
 	}
 
 	static getInstance(): EditorCore {
